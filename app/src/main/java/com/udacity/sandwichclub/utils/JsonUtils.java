@@ -34,7 +34,7 @@ public class JsonUtils {
         JSONObject jsonObjectName = sandwichDetails.getJSONObject(DETAIL_NAME);
 
         // Get the main name
-        sandwich.setMainName(jsonObjectName.getString(DETAIL_MAIN_NAME));
+        sandwich.setMainName(jsonObjectName.optString(DETAIL_MAIN_NAME));
 
         // Get the AKA array and convert it to a string list
         JSONArray jsonArrayAka = jsonObjectName.getJSONArray(DETAIL_AKA);
@@ -45,10 +45,10 @@ public class JsonUtils {
         sandwich.setAlsoKnownAs(aka);
 
         // Get the description
-        sandwich.setDescription(sandwichDetails.getString(DETAIL_DESCRIPTION));
+        sandwich.setDescription(sandwichDetails.optString(DETAIL_DESCRIPTION));
 
         // Get the image
-        sandwich.setImage(sandwichDetails.getString(DETAIL_IMAGE));
+        sandwich.setImage(sandwichDetails.optString(DETAIL_IMAGE));
 
         // Get the ingredients
         JSONArray jsonArrayIngredients = sandwichDetails.getJSONArray(DETAIL_INGREDIENTS);
@@ -59,7 +59,7 @@ public class JsonUtils {
         sandwich.setIngredients(ingredients);
 
         // Get the origin
-        sandwich.setPlaceOfOrigin(sandwichDetails.getString(DETAIL_ORIGIN));
+        sandwich.setPlaceOfOrigin(sandwichDetails.optString(DETAIL_ORIGIN));
 
         return sandwich;
     }

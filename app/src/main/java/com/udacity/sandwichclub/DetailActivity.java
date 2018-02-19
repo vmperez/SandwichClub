@@ -16,12 +16,23 @@ import org.json.JSONException;
 
 import java.util.List;
 
+import butterknife.BindView;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
     private static final String TAG = DetailActivity.class.getSimpleName();
     private static final String N_A = "N/A";
+
+    @BindView(R.id.also_known_tv)
+    TextView akaTextView;
+    @BindView(R.id.description_tv)
+    TextView descriptionTextView;
+    @BindView(R.id.ingredients_tv)
+    TextView ingredientsTextView;
+    @BindView(R.id.origin_tv)
+    TextView originTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +71,8 @@ public class DetailActivity extends AppCompatActivity {
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .error(R.drawable.user_placeholder_error)
+                .placeholder(R.drawable.user_placeholder)
                 .into(sandwichIv);
 
         setTitle(sandwich.getMainName());
@@ -71,10 +84,9 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        TextView akaTextView = (TextView) findViewById(R.id.also_known_tv);
-        TextView descriptionTextView = (TextView) findViewById(R.id.description_tv);
-        TextView ingredientsTextView = (TextView) findViewById(R.id.ingredients_tv);
-        TextView originTextView = (TextView) findViewById(R.id.origin_tv);
+
+
+
 
         // Origin
         String origin = sandwich.getPlaceOfOrigin();
